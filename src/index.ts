@@ -11,14 +11,14 @@ cloudinary.config();
 cloudinary.uploader.upload(
     "https://res.cloudinary.com/demo/image/upload/v1707306308/cld-docs-hp/walking_woman",
     {
-        public_id: "walking_woman",
+        public_id: "walking_woman26",
         categorization: "google_tagging",
-        auto_tagging: 0.9,
+        auto_tagging: 0.75,
         //preparing transformation see more details: https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon#removing_the_background_on_the_fly
         eager: [{effect: "background_removal"}]
     })
     .then((result)=>{
-        console.log(result.info.categorization.google_tagging)}).catch((error)=> {console.log(error)});
+        console.log(result)}).catch((error)=> {console.log(error)});
 
 //Upload an image for you underlay
 cloudinary.uploader.upload(
@@ -34,7 +34,7 @@ const url = cloudinary.url("walking_woman", {
         { effect: "background_removal" },
         { gravity: "auto", crop: "auto", aspect_ratio: 1, width: 450 },
         { underlay: "street", aspect_ratio: 1, width: 450},
-        {if: "!Collar!_in_tags"},
+        {if: "!overcoat!_in_tags"},
         {
             overlay:
                 { font_family: "Arial", font_size: 25,  letter_spacing: 3, font_weight:"bold", text: "SALE" },
