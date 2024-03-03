@@ -37,10 +37,11 @@ const url = cloudinary.url("walking_woman", {
         {if: "!overcoat!_in_tags"},
         {
             overlay:
-                { font_family: "Arial", font_size: 25,  letter_spacing: 3, font_weight:"bold", text: "SALE" },
-            color: "red",
-            x: 130,
-            y: 140
+                { font_family: "Arial", font_size: 35,  letter_spacing: 3, font_weight:"bold", text: "SALE" },
+            color: "red", 
+            gravity: "north_east",
+            x: 30,
+            y: 30
         },
         {if: "end"},
         { format: "auto", quality: "auto"}
