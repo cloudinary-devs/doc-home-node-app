@@ -1,12 +1,9 @@
 import 'dotenv/config'
 import { v2 as cloudinary } from 'cloudinary';
 
-// Before starting:
-// - Make sure you have a Cloudinary account or register for free (free tier available): https://cloudinary.com/users/register_free
-// - Make sure you're registered for the AWS Auto-Tagging add-on (free tier available): https://cloudinary.com/documentation/google_auto_tagging_addon
-// - Make sure you're registered for the Cloudinary Background Removal add-on: https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon
-// - Add your API environment variable to the .env file. You can find your API environment variable in your Console Dashboard.
+// Review the repo readme for details on prerequisites and instructions on running this app.  
 
+// Makes sure to add your Cloudinary API environment variable to the .env file before running. See the readme for details.
 cloudinary.config();
 
 
