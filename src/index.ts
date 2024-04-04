@@ -8,8 +8,8 @@ cloudinary.config();
 
 
 // Upload an image from GoogleDrive and apply auto-tagging for all detected categories with >=75% confidence
-// Support overwriting existing assets so this script can be run more than once.
-// Apply an eager transformation to warm up the cache with a background-removed variation
+// Set `overwrite` to true to support running the script multiple times and replacing the same asset
+// Use `eager` to warm up the cache with the background-removed variation so delivery can be immediate.
 cloudinary.uploader.upload(
     "https://drive.google.com/uc?export=view&id=1gnXAJZh-Of70TzpU1Meja4TAgqc6CVe7",
     {
