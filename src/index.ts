@@ -58,4 +58,4 @@ const url = cloudinary.url("bag_model", {
     ]
 });
 
-console.log("This is the fully transformed generated url: ", url);
+console.log("This is the fully transformed generated url: ", url, "\n");
