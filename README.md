@@ -1,6 +1,6 @@
 ## Docs Home Node Sample
 
-This small sample app parallels the interactive demo on the [Cloudinary Doc site home page](cloudinary.com/documentation). It demonstrates using the Node SDK to upload a remote image to Cloudinary and then generates URLs that apply various image transformations to achieve a realistic ecommerce use-case.
+This small sample app parallels the interactive demo on the [Cloudinary Doc site home page](https://cloudinary.com/documentation). It demonstrates using the Node SDK to upload a remote image to Cloudinary and then generates URLs that apply various image transformations to achieve a realistic ecommerce use-case.
 
 ### Prerequisites
 
