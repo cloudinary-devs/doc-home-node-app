@@ -1,51 +1,61 @@
 import 'dotenv/config'
 import { v2 as cloudinary } from 'cloudinary';
 
-// Update to your credentials in the .env file
+// Review the repo readme for details on prerequisites and instructions on running this app.  
+
+// Makes sure to add your Cloudinary API environment variable to the .env file before running. See the readme for details.
 cloudinary.config();
 
-// Ensure that you're registered to auto tagging https://cloudinary.com/documentation/google_auto_tagging_addon
-// Ensure that you're registered to background removal https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon
-//Upload an image with auto tag
-//apply eager transformation
+
+// Upload an image from GoogleDrive and apply auto-tagging for all detected categories with >=75% confidence
+// Set `overwrite` to true to support running the script multiple times and replacing the same asset
+// Use `eager` to warm up the cache with the background-removed variation so delivery can be immediate.
 cloudinary.uploader.upload(
-    "https://res.cloudinary.com/demo/image/upload/v1707306308/cld-docs-hp/walking_woman",
+    "https://drive.google.com/uc?export=view&id=1gnXAJZh-Of70TzpU1Meja4TAgqc6CVe7",
     {
-        public_id: "walking_woman26",
+        public_id: "bag_model",
         categorization: "google_tagging",
         auto_tagging: 0.75,
-        //preparing transformation see more details: https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon#removing_the_background_on_the_fly
+        overwrite:true,
+        //warming up the cache for transformation effect. For details, see: https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon#removing_the_background_on_the_fly
         eager: [{effect: "background_removal"}]
     })
-    .then((result)=>{
-        console.log(result)}).catch((error)=> {console.log(error)});
+    .then((result: any)=>{
+        console.log(result)}).catch((error: any)=> {console.log(error)});
 
-//Upload an image for you underlay
+//Upload a background image from GoogleDrive for your underlay
 cloudinary.uploader.upload(
-    "https://res.cloudinary.com/demo/image/upload/v17073124415555/cld-docs-hp/street.jpg",
-    { public_id: "street" })
-    .then((result)=>{
-        console.log(result)}).catch((error)=> {console.log(error)});
+    "https://drive.google.com/uc?export=view&id=15kVDnO77dv5-0hE4-P4g3jKfwPN9ku2U",
+    { 
+        public_id: "buildings_bg",
+        overwrite:true
+    })
+    .then((result: any)=>{
+        console.log(result)}).catch((error: any)=> {console.log(error)});
 
 
-//Transformation image
-const url = cloudinary.url("walking_woman", {
+//Transform the image: 
+//remove background, use a different background image as an underlay, auto-crop to portrait aspect_ratio, 
+//add conditional text layer if the image has the tag 'overcoat', 
+//optimize delivery by resizing and applying auto-format and auto-quality 
+const url = cloudinary.url("bag_model", {
     transformation: [
         { effect: "background_removal" },
-        { gravity: "auto", crop: "auto", aspect_ratio: 1, width: 450 },
-        { underlay: "street", aspect_ratio: 1, width: 450},
-        {if: "!overcoat!_in_tags"},
+        { underlay: 'buildings_bg', flags: 'relative', width: '1.0', height:'1.0', crop: 'fill'},
+        { gravity: 'auto', crop: 'auto', aspect_ratio: 0.5 },
+        { if: '!overcoat!_in_tags'},
         {
             overlay:
-                { font_family: "Arial", font_size: 35,  letter_spacing: 3, font_weight:"bold", text: "SALE" },
-            color: "red", 
-            gravity: "north_east",
-            x: 30,
-            y: 30
+                { font_family: 'Arial', font_size: 160,  font_weight:'bold', text: 'SALE' },
+            color: 'rgb:fc6136',
+            gravity: 'north',
+            y: 60
         },
-        {if: "end"},
-        { format: "auto", quality: "auto"}
+        {if: 'end'},
+        { crop: 'scale', height: 450 },
+        { format: 'auto'},
+        { quality: 'auto'}
     ]
 });
 
-console.log("this is the full transformed url", url);
+console.log("This is the fully transformed generated url: ", url, "\n");
