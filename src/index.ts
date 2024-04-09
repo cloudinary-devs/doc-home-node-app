@@ -17,13 +17,13 @@ cloudinary.uploader.upload(
         categorization: "google_tagging",
         auto_tagging: 0.75,
         overwrite:true,
-        // Warming up the cache for transformation effect. For details, see: https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon#removing_the_background_on_the_fly
+        // Warming up the cache for transformation effect. For details, see: https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon#removing_the_background_on_the_fly.
         eager: [{effect: "background_removal"}]
     })
     .then((result: any)=>{
         console.log(result)}).catch((error: any)=> {console.log(error)});
 
-// Upload a background image from GoogleDrive for your underlay
+// Upload a background image from GoogleDrive for your underlay.
 cloudinary.uploader.upload(
     "https://drive.google.com/uc?export=view&id=15kVDnO77dv5-0hE4-P4g3jKfwPN9ku2U",
     { 
@@ -35,9 +35,9 @@ cloudinary.uploader.upload(
 
 
 // Transform the image: 
-// remove background, use a different background image as an underlay, auto-crop to portrait aspect_ratio, 
-// add conditional text layer if the image has the tag 'overcoat', 
-// optimize delivery by resizing and applying auto-format and auto-quality 
+// Remove background, use a different background image as an underlay, auto-crop to portrait aspect_ratio. 
+// Add conditional text layer if the image has the tag 'overcoat'. 
+// Optimize delivery by resizing and applying auto-format and auto-quality.
 const url = cloudinary.url("bag_model", {
     transformation: [
         { effect: "background_removal" },
