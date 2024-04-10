@@ -5,8 +5,8 @@ This small sample app parallels the interactive demo on the [Cloudinary Doc site
 ### Prerequisites
 
 1. Make sure you have a Cloudinary account or [register for free](https://cloudinary.com/users/register_free).
-2. Copy your `CLOUDINARY_URL` environment variable and replace it in the `.env` file. You can find your credentials in your Cloudinary Console Dashboard.
-2. Make sure you're registered for the [AWS Auto-Tagging add-on](https://cloudinary.com/documentation/google_auto_tagging_addon)  (free tier available).
+2. Create a new `.env` file in the root of the project and copy your `CLOUDINARY_URL` environment variable into it. You can find your credentials in your Cloudinary Console Dashboard.
+2. Make sure you're registered for the [Google Auto-Tagging add-on](https://cloudinary.com/documentation/google_auto_tagging_addon) (free tier available).
 3. Make sure you're registered for the [Cloudinary AI Background Removal add-on](https://cloudinary.com/documentation/cloudinary_ai_background_removal_addon) (free tier available).
 
 ### Running the app
