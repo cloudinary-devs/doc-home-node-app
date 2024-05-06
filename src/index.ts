@@ -29,7 +29,7 @@ cloudinary.config();
 
         // Upload a background image from GoogleDrive for your underlay.
 
-        const results2 = await cloudinary.uploader.upload(
+        const backgroundUpload = await cloudinary.uploader.upload(
             'https://drive.google.com/uc?export=view&id=15kVDnO77dv5-0hE4-P4g3jKfwPN9ku2U',
             {
                 public_id: 'buildings_bg',
