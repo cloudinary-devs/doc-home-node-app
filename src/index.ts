@@ -65,7 +65,7 @@ cloudinary.config();
             ]
         });
 
-        console.log(`Fully transformed generated URL: ${url}`);
+        console.log(`\nThis is the fully transformed generated URL:\n\n${url}\n`);
     } catch(error) {
         console.log('Something went wrong! Error:', error);
     }
