@@ -37,7 +37,7 @@ cloudinary.config();
             }
         );
 
-        console.log('Results:', results2);
+        console.log('Background Upload Results:', backgroundUpload);
 
         // Transform the image:
         // Remove background, use a different background image as an underlay, auto-crop to portrait aspect_ratio.
