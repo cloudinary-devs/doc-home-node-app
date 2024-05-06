@@ -25,7 +25,7 @@ cloudinary.config();
             }
         );
 
-        console.log('Results:', results1);
+        console.log('Upload Results:', uploadResult);
 
         // Upload a background image from GoogleDrive for your underlay.
 
