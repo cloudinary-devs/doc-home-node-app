@@ -49,7 +49,7 @@ cloudinary.config();
                 { effect: 'background_removal' },
                 { underlay: 'buildings_bg', flags: 'relative', width: '1.0', height:'1.0', crop: 'fill' },
                 { gravity: 'auto', crop: 'auto', aspect_ratio: 0.5 },
-                // If the autotagging discovers an "overcoat" and applies the tag to the image during the
+                // If the image has the tag `overcoat` (i.e. if it was added during the autotagging performed during upload), apply a SALE image overlay
                 // upload process, show a tag of SALE on top of the image
                 { if: '!overcoat!_in_tags' },
                 {
