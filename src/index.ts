@@ -13,7 +13,7 @@ cloudinary.config();
         // Set `overwrite` to true to support running the script multiple times and replacing the same asset.
         // Use `eager` to warm up the cache with the background-removed variation so delivery can be immediate.
 
-        const results1 = await cloudinary.uploader.upload(
+        const uploadResult = await cloudinary.uploader.upload(
             'https://drive.google.com/uc?export=view&id=1gnXAJZh-Of70TzpU1Meja4TAgqc6CVe7',
             {
                 public_id: 'bag_model',
